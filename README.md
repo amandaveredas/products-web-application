@@ -8,6 +8,6 @@ User Registration Web Application
 
 
 * ## To access the application locally:
-  Home page: localhost:8080/
+  Home page: http://localhost:8080/
 
   Users list: http://localhost:8080/user/list
