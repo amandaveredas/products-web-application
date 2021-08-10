@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,17 +11,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">User Registration</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="/">Home</a></li>
-      <li><a href="/user/list">Users List</a></li>
-    </ul>
-  </div>
-</nav>
+<c:import url="/WEB-INF/jsp/menu.jsp"/>
 <div class="container">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -34,26 +25,26 @@
     <div class="carousel-inner">
 
       <div class="item active">
-        <img src="img/friends.jpg" alt="Friends" style="width:100%;">
+        <img src="img/quimicos.jpg" alt="Chemical" style="width:100%;">
         <div class="carousel-caption">
           <h3>Easy</h3>
-          <p>Manage user easily!</p>
+          <p>Register your company''s chemical products easily!</p>
         </div>
       </div>
 
       <div class="item">
-        <img src="img/parents.jpg" alt="Parents" style="width:100%;">
-        <div class="carousel-caption">
-          <h3>Intuitive</h3>
-          <p>Find everybody quickly!</p>
-        </div>
-      </div>
-
-      <div class="item">
-        <img src="img/woman.jpg" alt="Woman" style="width:100%;">
+        <img src="img/quimicos2.jpg" alt="Chemical" style="width:100%;">
         <div class="carousel-caption">
           <h3>Safety</h3>
-          <p>Encrypted data!</p>
+          <p>Protect your employees!</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="img/quimicos3.jpeg" alt="Chemical" style="width:100%;">
+        <div class="carousel-caption">
+          <h3>Trustly</h3>
+          <p>Properly label your products!</p>
         </div>
       </div>
 
@@ -72,5 +63,6 @@
 </div>
 
 </body>
+
 </html>
 

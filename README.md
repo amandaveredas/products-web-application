@@ -1,7 +1,6 @@
-User Registration Web Application
+Chemicals Product Web Application
 
-# The functionality of this application is to be a register of users, together with their main data: name, telephone, address and email.
-
+# The functionality of this application is to be a register of chemical products, together with their main data: name, company, classification, expiration date and recommended PPE.
 * ## Used tools:
   Bootstrap
 
@@ -10,4 +9,4 @@ User Registration Web Application
 * ## To access the application locally:
   Home page: http://localhost:8080/
 
-  Users list: http://localhost:8080/user/list
+  Users list: http://localhost:8080/product/list
