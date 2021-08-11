@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Chemical Products</title>
+  <title>Produtos Químicos</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -13,12 +13,19 @@
 <body>
 <c:import url="/WEB-INF/jsp/menu.jsp"/>
 <div class="container">
+<c:if test="${not empty message}">
+    <div class="alert alert-success">
+      <strong>Sucesso!</strong>${message}
+    </div>
+</c:if>
   <h2>Lista de produtos: ${products.size()}</h2>
-  <center><b><a href="">Incluir um novo time</a></b><center>
+  <center><b><a href="/product">Incluir um novo produto</a></b><center>
+  <c:if test="${not empty products}">
   <table class="table table-striped">
       <thead>
         <tr>
           <th>Nome</th>
+          <th>Empresa</th>
           <th></th>
           <th></th>
         </tr>
@@ -26,14 +33,18 @@
       <tbody>
       <c:forEach var="product" items="${products}">
         <tr>
-          <td>${product}</td>
+          <td>${product.name}</td>
+          <td>${product.company}</td>
           <td><a href="">Detalhar</a></td>
-          <td><a href="">Excluir</a></td>
+          <td><a href="/product/delete">Excluir</a></td>
         </tr>
-        </c:forEach>
+      </c:forEach>
         </tbody>
     </table>
-
+  </c:if>
+  <c:if test="${empty products}">
+   <h2>Não existem times cadastrados!</h2>
+   </c:if>
 </div>
 
 </body>

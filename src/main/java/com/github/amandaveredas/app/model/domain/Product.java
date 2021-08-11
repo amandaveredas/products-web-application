@@ -14,6 +14,11 @@ public class Product {
         this.name = name;
     }
 
+    public Product(String name, String company) {
+        this.name = name;
+        this.company = company;
+    }
+
     public Product(String name, String company, String classification, String recomendedPpe) {
         this.name = name;
         this.company = company;
