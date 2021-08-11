@@ -4,19 +4,27 @@ import com.github.amandaveredas.app.model.domain.Product;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class ProductService {
 
-    public List<Product> getList(){
-        List<Product> products = new ArrayList<Product>();
+    private static List<Product> productsColletion = new ArrayList<Product>();
 
-        products.add(new Product("Monoetilenoglicol","Atlanta"));
-        products.add(new Product("Etileno","Chilesi"));
-        products.add(new Product("Gás Carbônico","White Martins"));
-        products.add(new Product("Gasolina Natural","Petrobras"));
+    public List<Product> getList() {
+        return productsColletion;
+    }
 
-        return products;
+    public void include(Product product) {
+        productsColletion.add(product);
+    }
+
+    public void delete(Integer id){
+        productsColletion.remove(productsColletion.get(id-1));
+    }
+
+    public Product getById(Integer id){
+        return  productsColletion.get(id-1);
     }
 }

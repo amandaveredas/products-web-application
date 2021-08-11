@@ -2,10 +2,12 @@ package com.github.amandaveredas.app.controller;
 
 import com.github.amandaveredas.app.model.domain.Product;
 import com.github.amandaveredas.app.model.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
@@ -14,6 +16,9 @@ import java.util.List;
 @Controller
 
 public class ProductController {
+
+    @Autowired
+    private ProductService productService;
 
     @GetMapping({"/"})
     public String initializer() {
@@ -24,7 +29,6 @@ public class ProductController {
     @GetMapping({"/product/list"})
     public String getList(Model model) {
 
-        ProductService productService = new ProductService();
         model.addAttribute("products", productService.getList());
         return "product/list";
     }
@@ -34,9 +38,11 @@ public class ProductController {
         return "product/registration";
     }
 
-    @GetMapping({"/product/delete"})
-    public String deleteProduct(Model model) {
-        model.addAttribute("message", "Produto excluído com sucesso");
+    @GetMapping({"/product/{id}/delete"})
+    public String deleteProduct(Model model, @PathVariable Integer id) {
+        Product deletedProduct = productService.getById(id);
+        productService.delete(id);
+        model.addAttribute("message", "Produto " +deletedProduct.getName() + " excluído com sucesso");
         return getList(model);
     }
 
@@ -47,6 +53,8 @@ public class ProductController {
 
     @PostMapping({"/product/include"})
     public String include(Model model, Product product) {
+
+        productService.include(product);
         model.addAttribute("message", "O produto " + product.getName() + " foi incluído com sucesso!");
         return getList(model);
     }

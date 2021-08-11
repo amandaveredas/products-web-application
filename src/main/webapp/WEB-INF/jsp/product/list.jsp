@@ -24,19 +24,19 @@
   <table class="table table-striped">
       <thead>
         <tr>
+          <th>Id</th>
           <th>Nome</th>
           <th>Empresa</th>
-          <th></th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
-      <c:forEach var="product" items="${products}">
+      <c:forEach var="product" items="${products}" varStatus="id">
         <tr>
+          <td>${id.count}</td>
           <td>${product.name}</td>
           <td>${product.company}</td>
           <td><a href="">Detalhar</a></td>
-          <td><a href="/product/delete">Excluir</a></td>
+          <td><a href="/product/${id.count}/delete">Excluir</a></td>
         </tr>
       </c:forEach>
         </tbody>
