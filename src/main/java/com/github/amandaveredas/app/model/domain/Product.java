@@ -1,7 +1,14 @@
 package com.github.amandaveredas.app.model.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "tabela_de_produtos_químicos")
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
     private String company;
     private String classification;
@@ -10,8 +17,11 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name) {
+    public Product(String name, String company, String classification, String recomendedPpe) {
         this.name = name;
+        this.company = company;
+        this.classification = classification;
+        this.recomendedPpe = recomendedPpe;
     }
 
     public Product(String name, String company) {
@@ -19,11 +29,8 @@ public class Product {
         this.company = company;
     }
 
-    public Product(String name, String company, String classification, String recomendedPpe) {
-        this.name = name;
-        this.company = company;
-        this.classification = classification;
-        this.recomendedPpe = recomendedPpe;
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {

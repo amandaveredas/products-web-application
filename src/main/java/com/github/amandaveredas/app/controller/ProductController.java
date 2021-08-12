@@ -5,13 +5,10 @@ import com.github.amandaveredas.app.model.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 
@@ -22,7 +19,6 @@ public class ProductController {
 
     @GetMapping({"/"})
     public String initializer() {
-
         return "index";
     }
 
@@ -41,8 +37,16 @@ public class ProductController {
     @GetMapping({"/product/{id}/delete"})
     public String deleteProduct(Model model, @PathVariable Integer id) {
         Product deletedProduct = productService.getById(id);
-        productService.delete(id);
-        model.addAttribute("message", "Produto " +deletedProduct.getName() + " excluído com sucesso");
+
+        //RESOLVER ESSA BAGAÇA COM UM THROW
+        if (deletedProduct != null){
+            productService.delete(id);
+            model.addAttribute("message", "Produto excluído com sucesso");
+        }else{
+            model.addAttribute("message", "Produto não econtrado! Não foi possível excluir");
+        }
+
+
         return getList(model);
     }
 

@@ -1,30 +1,43 @@
 package com.github.amandaveredas.app.model.service;
 
 import com.github.amandaveredas.app.model.domain.Product;
+import com.github.amandaveredas.app.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
 
-    private static List<Product> productsColletion = new ArrayList<Product>();
+    @Autowired
+    private ProductRepository productRepository;
 
     public List<Product> getList() {
-        return productsColletion;
+        return (List<Product>) productRepository.findAll();
     }
 
     public void include(Product product) {
-        productsColletion.add(product);
+        productRepository.save(product);
     }
 
     public void delete(Integer id){
-        productsColletion.remove(productsColletion.get(id-1));
+        productRepository.deleteById(id);
+    }
+
+    public boolean verifyIfExists(Integer id){
+        return productRepository.existsById(id);
     }
 
     public Product getById(Integer id){
-        return  productsColletion.get(id-1);
+        //EITA LASQUEIRA TENHO QUE ARRUMAR ISSO DAQUI COM UM THROW DA VIDA
+        Product gettedByIdProduct = null;
+
+        if (verifyIfExists(id)){
+            Optional<Product> foundProduct= productRepository.findById(id);
+             gettedByIdProduct = foundProduct.get();
+        }
+        return gettedByIdProduct;
     }
 }

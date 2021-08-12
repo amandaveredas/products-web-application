@@ -32,11 +32,11 @@
       <tbody>
       <c:forEach var="product" items="${products}" varStatus="id">
         <tr>
-          <td>${id.count}</td>
+          <td>${product.id}</td>
           <td>${product.name}</td>
           <td>${product.company}</td>
-          <td><a href="">Detalhar</a></td>
-          <td><a href="/product/${id.count}/delete">Excluir</a></td>
+          <td><a href="/product/${product.id}/consult">Detalhar</a></td>
+          <td><a href="/product/${product.id}/delete">Excluir</a></td>
         </tr>
       </c:forEach>
         </tbody>
