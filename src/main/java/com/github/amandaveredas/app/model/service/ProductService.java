@@ -31,13 +31,9 @@ public class ProductService {
     }
 
     public Product getById(Integer id){
-        //EITA LASQUEIRA TENHO QUE ARRUMAR ISSO DAQUI COM UM THROW DA VIDA
-        Product gettedByIdProduct = null;
 
-        if (verifyIfExists(id)){
-            Optional<Product> foundProduct= productRepository.findById(id);
-             gettedByIdProduct = foundProduct.get();
-        }
-        return gettedByIdProduct;
+        return productRepository.findById(id).orElse(null);
+        
     }
+
 }

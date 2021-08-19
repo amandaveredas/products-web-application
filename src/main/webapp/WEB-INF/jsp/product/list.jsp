@@ -15,7 +15,7 @@
 <div class="container">
 <c:if test="${not empty message}">
     <div class="alert alert-success">
-      <strong>Sucesso!</strong>${message}
+      <strong>Veja só! </strong>${message}
     </div>
 </c:if>
   <h2>Lista de produtos: ${products.size()}</h2>
