@@ -11,19 +11,31 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<c:import url="/WEB-INF/jsp/menu.jsp"/>
+    <c:import url="/WEB-INF/jsp/menu.jsp"/>
+    <c:set var="title" value="Registro de produtos"/>
+    <c:set var="route" value="/product/include"/>
+    <c:set var="method" value="post"/>
+    <c:set var="button1" value="Cadastrar"/>
+
+    <c:if test="${not empty product}">
+    	<c:set var="title" value="Consulta de produtos"/>
+        <c:set var="route" value="/product/list"/>
+        <c:set var="method" value="get"/>
+        <c:set var="button1" value="Voltar"/>
+    </c:if>
+
 <div class="container">
-<h2>Registro de produtos</h2>
-  <form action="product/include" method="post">
+<h2>${title}</h2>
+  <form action="${route}" method="${method}">
     <div class="form-group">
       <label>Nome:</label>
-      <input type="text" class="form-control" placeholder="Entre com o nome" name="name">
+      <input type="text" class="form-control" placeholder="Entre com o nome" name="name" value="${product.name}">
     </div>
     <div class="form-group">
       <label>Fabricante:</label>
-      <input type="text" class="form-control" placeholder="Digite o nome do fabricante" name="company">
+      <input type="text" class="form-control" placeholder="Digite o nome do fabricante" name="company" value="${product.company}">
     </div>
-    <button type="submit" class="btn btn-default">Cadastrar</button>
+    <button type="submit" class="btn btn-default">${button1}</button>
   </form>
 
 </div>

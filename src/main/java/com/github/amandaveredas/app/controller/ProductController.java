@@ -37,7 +37,6 @@ public class ProductController {
     @GetMapping({"/product/{id}/delete"})
     public String deleteProduct(Model model, @PathVariable Integer id) {
         Product deletedProduct = productService.getById(id);
-
         //RESOLVER ESSA BAGAÇA COM UM THROW
         if (deletedProduct != null){
             productService.delete(id);
@@ -45,14 +44,14 @@ public class ProductController {
         }else{
             model.addAttribute("message", "Produto não econtrado! Não foi possível excluir");
         }
-
-
         return getList(model);
     }
 
-    @GetMapping({"/product/consult"})
-    public String consultProduct() {
-        return "product/consult";
+    @GetMapping({"/product/{id}/consult"})
+    public String consultProduct(Model model, @PathVariable Integer id) {
+        Product consultedProduct = productService.getById(id);
+        model.addAttribute("product", consultedProduct);
+        return registrationScreen();
     }
 
     @PostMapping({"/product/include"})
