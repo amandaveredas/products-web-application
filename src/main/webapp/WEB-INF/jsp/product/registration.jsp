@@ -19,7 +19,7 @@
 
     <c:if test="${not empty product}">
     	<c:set var="title" value="Consulta de produtos"/>
-        <c:set var="route" value="/product/list"/>
+        <c:set var="route" value="/return"/>
         <c:set var="method" value="get"/>
         <c:set var="button1" value="Voltar"/>
     </c:if>

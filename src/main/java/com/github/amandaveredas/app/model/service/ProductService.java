@@ -3,6 +3,7 @@ package com.github.amandaveredas.app.model.service;
 import com.github.amandaveredas.app.model.domain.Product;
 import com.github.amandaveredas.app.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,10 @@ public class ProductService {
 
     public List<Product> getList() {
         return (List<Product>) productRepository.findAll();
+    }
+
+    public List<Product> getList(String sort){
+        return productRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
     }
 
     public void include(Product product) {

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -62,5 +63,15 @@ public class ProductController {
         return getList(model);
     }
 
+    @GetMapping("/return")
+    public String goBack(){
+        return "redirect:/product/list";
+    }
+
+    @PostMapping("/product/orderBy")
+    public String orderBy(Model model, @RequestParam String sortBy){
+        model.addAttribute("products", productService.getList(sortBy));
+        return "product/list";
+    }
 
 }
