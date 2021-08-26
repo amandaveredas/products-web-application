@@ -31,10 +31,6 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
-    public boolean verifyIfExists(Integer id){
-        return productRepository.existsById(id);
-    }
-
     public Product getById(Integer id){
 
         return productRepository.findById(id).orElse(null);

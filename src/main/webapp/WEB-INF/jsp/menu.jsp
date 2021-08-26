@@ -7,6 +7,7 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="/">Home</a></li>
       <li><a href="/product/list">Produtos</a></li>
+      <li><a href="/user/list">Usuários</a></li>
     </ul>
   </div>
 </nav>
